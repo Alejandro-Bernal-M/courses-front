@@ -10,10 +10,7 @@ const initialState = {
 const coursesSlice = createSlice({
   name: 'courses',
   initialState,
-  reducers: {},
-  extraReducers:{
-
-  }
+  reducers: {}
 });
 
 export default coursesSlice.reducer;
