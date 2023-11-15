@@ -2,6 +2,7 @@
 import styles from './Navbar.module.css';
 import { useSyncExternalStore } from 'react';
 import store from "@/redux/store";
+import Link from 'next/link';
 
 const Navbar = () => {
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
@@ -23,7 +24,12 @@ const Navbar = () => {
             </>
           )
           :
-          <li>Login</li>
+          (
+            <>
+              <li>Signin</li>
+              <li><Link href='/signup' >Signup </Link></li>
+            </>
+          )
         }
       </ul>
     </nav>
