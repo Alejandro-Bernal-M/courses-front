@@ -39,7 +39,6 @@ const Signin = () => {
       .then(res => {
         console.log(res);
         dispatch(signin(res.data))
-        toast.success('Signin successfully');
         form.reset();
         router.push('/');
         localStorage.setItem('token', JSON.stringify(res.data.token));

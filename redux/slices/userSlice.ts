@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 const initialState = {
   name: '',
@@ -22,6 +23,7 @@ const userSlice = createSlice({
       state.email = '';
       state.token = '';
       state.isLogged = false;
+      toast.success('Logout successfully');
     },
   }
 })

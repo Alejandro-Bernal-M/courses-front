@@ -31,7 +31,7 @@ const RouteSecurity = ({ children }: {children: React.ReactNode}) => {
       push("/");
     }
     if (restrictedSignedInRoutes.includes(pathname) && loggedInUser) {
-      toast.success("You are already logged In");
+      toast.success("Logged In");
       push("/");
     }
   }, [pathname, loggedInUser]);
