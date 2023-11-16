@@ -11,6 +11,11 @@
   --padding-2: 8px;
   --padding-3: 12px;
   --padding-4: 16px;
+  --padding-5: 24px;
+  --padding-6: 32px;
+  --padding-relative-h-1: 10vh;
+  --padding-relative-h-2: 15vh;
+  --padding-relative-1: 20%;
 
   --margin-0: 0px;
   --margin-1: 4px;
@@ -57,7 +62,8 @@ h3 {
 
 p,
 span,
-button {
+button,
+input {
   font-family: var(--font-mono);
 }
 

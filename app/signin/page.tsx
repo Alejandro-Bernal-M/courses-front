@@ -1,5 +1,6 @@
 'use client'
 
+import styles from "./page.module.css"
 import toast from "react-hot-toast";
 import apiEndpoints from "@/utils/apiEndpoints";
 import axios from "axios";
@@ -52,12 +53,12 @@ const Signin = () => {
 
   };
     return (
-      <section>
-      <form onSubmit={handleSubmit}>
-        <h1>Signin</h1>
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="password" />
-        <input type="submit" value="Submit"/>
+      <section className={styles.section}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h2 className={styles.title}>Signin</h2>
+        <input type="email" name="email" placeholder="email" className={styles.input} />
+        <input type="password" name="password" placeholder="password" className={styles.input} />
+        <input type="submit" value="Submit" className="button"/>
       </form>
     </section>
     );
