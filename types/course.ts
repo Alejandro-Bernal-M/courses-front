@@ -16,3 +16,12 @@ export type CourseProps ={
   thumbnail: string;
   syllabus?: syllabus[];
 }
+
+export type BasicCourseProps = {
+  _id: string;
+  name: string;
+  description: string;
+  thumbnail: string;
+  enrollmentStatus: string;
+  prerequisites: string[];
+}

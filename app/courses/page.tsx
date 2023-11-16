@@ -8,7 +8,7 @@ import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useSyncExternalStore } from "react";
 import store from "@/redux/store";
 import Course from "@/components/Course/Course";
-import type { CourseProps } from '@/types/course'
+import type { BasicCourseProps } from '@/types/course'
 
 
 function Courses() {
@@ -25,20 +25,15 @@ function Courses() {
     <section className={styles.section}>
       <h1 className={styles.title}>All our courses</h1> 
       <div className={styles.coursesHolder}>
-        {courses.map((course:CourseProps) => (
+        {courses.map((course:BasicCourseProps) => (
           <Course
             key={course._id}
             _id={course._id}
             description={course.description}
-            duration={course.duration}
             enrollmentStatus={course.enrollmentStatus}
-            instructor={course.instructor}
-            location={course.location}
             name={course.name}
             prerequisites={course.prerequisites}
-            schedule={course.schedule}
             thumbnail={course.thumbnail}
-            syllabus={course.syllabus}
           />
         ))}
       </div>
