@@ -17,14 +17,12 @@
   font-weight: 700;
   color: var(--color-1);
   -webkit-text-stroke: var(--color-6) 0.5px;
-  font-family: var(--font-sans);
 }
 
 .main p {
   font-size: var(--font-size-3);
   font-weight: 400;
   color: var(--color-4);
-  font-family: var(--font-mono);
 }
 
 @media (width < 768px) {

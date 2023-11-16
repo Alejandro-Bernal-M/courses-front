@@ -21,22 +21,22 @@ const Navbar = () => {
   return(
     <nav className={styles.nav}>
       <div>
-        <h1><Link href="/"> Get Knowledge</Link></h1>
+        <h1><Link href="/" className={styles.link}> Get Knowledge</Link></h1>
       </div>
       <ul className={styles.ul}>
-        <li><Link href="/courses" >Courses </Link></li>
+        <li><Link href="/courses" className={styles.link} >Courses </Link></li> 
         {user.isLogged ?
           (
             <>
-              <li>Dashboard</li>
-              <li><button onClick={handleLogout}>Logout</button></li>
+              <li><Link href="/dashboard" className={styles.link} >Dashboard </Link></li> 
+              <li><button onClick={handleLogout} className='button'>Logout</button></li>
             </>
           )
           :
           (
             <>
-              <li><Link href='/signin' >Signin</Link></li>
-              <li><Link href='/signup' >Signup </Link></li>
+              <li><Link href='/signin' className={styles.link} >Signin</Link></li>
+              <li><Link href='/signup' className={styles.link} >Signup </Link></li>
             </>
           )
         }
