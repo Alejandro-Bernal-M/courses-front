@@ -1,0 +1,42 @@
+.main {
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/blurry-gradient-haikei.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--margin-4);
+}
+
+.main h1 {
+  font-size: var(--font-size-7);
+  font-weight: 700;
+  color: var(--color-1);
+  -webkit-text-stroke: var(--color-6) 0.5px;
+  font-family: var(--font-sans);
+}
+
+.main p {
+  font-size: var(--font-size-3);
+  font-weight: 400;
+  color: var(--color-4);
+  font-family: var(--font-mono);
+}
+
+@media (width < 768px) {
+  .main {
+    background-image: url('../assets/images/blurry-gradient-haikei-mobile.svg');
+  }
+
+  .main h1 {
+    font-size: var(--font-size-6);
+  }
+
+  .main p {
+    font-size: var(--font-size-2);
+  }
+}
