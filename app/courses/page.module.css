@@ -21,7 +21,7 @@
 
 .coursesHolder {
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   gap: var(--margin-6);
