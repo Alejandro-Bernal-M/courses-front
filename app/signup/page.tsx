@@ -1,4 +1,6 @@
 'use client'
+
+import styles from "./page.module.css"
 import { useState } from "react";
 import toast from "react-hot-toast";
 import apiEndpoints from "@/utils/apiEndpoints";
@@ -72,27 +74,27 @@ const Signup = () => {
 
   };
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <h1>Signup</h1>
+    <section className={styles.section}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h2 className={styles.title}>Signup</h2>
         {admin && (
-          <p>Creating admin profile</p>
+          <p className={styles.alert}>Creating admin profile</p>
           )}
-        <input type="text" name="firstName" placeholder="first name" />
-        <input type="text" name="lastName" placeholder="last name" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="password" />
-        <input type="password" name="passwordConfirmation" placeholder="confirm password" />
+        <input type="text" name="firstName" placeholder="first name" className={styles.input} />
+        <input type="text" name="lastName" placeholder="last name" className={styles.input} />
+        <input type="email" name="email" placeholder="email" className={styles.input} />
+        <input type="password" name="password" placeholder="password" className={styles.input} />
+        <input type="password" name="passwordConfirmation" placeholder="confirm password" className={styles.input} />
         {admin && (
           <>
-              <input type="password" name="adminPassword" placeholder="admin password" />
+              <input type="password" name="adminPassword" placeholder="admin password" className={styles.input} />
               <input type="text" name="role" value='admin' hidden readOnly />
             </>
           )
         }
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit" className="button"/>
       </form>
-      <button onClick={() => setAdmin(!admin)}>{admin ? "Register as user": "Register as admin"}</button>
+      <button onClick={() => setAdmin(!admin)} className="button" >{admin ? "Register as user": "Register as admin"}</button>
     </section>
   );
 };
