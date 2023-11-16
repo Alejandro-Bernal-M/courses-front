@@ -1,6 +1,7 @@
 'use client'
 import { Provider } from 'react-redux';
 import store from '../redux/store';
+import RouteSecurity from '@/utils/SecureRoutes';
 
 interface Props {
   children: React.ReactNode
@@ -9,7 +10,9 @@ interface Props {
 function Providers({children}: Props){
   return (
     <Provider store={store}>
-      {children}
+      <RouteSecurity>
+        {children}
+      </RouteSecurity>
     </Provider>
   )
 };
