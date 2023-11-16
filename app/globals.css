@@ -13,6 +13,7 @@
   --padding-4: 16px;
   --padding-5: 24px;
   --padding-6: 32px;
+  --padding-7: 48px;
   --padding-relative-h-1: 10vh;
   --padding-relative-h-2: 15vh;
   --padding-relative-1: 20%;
@@ -24,6 +25,8 @@
   --margin-4: 16px;
   --margin-5: 24px;
   --margin-6: 32px;
+  --margin-7: 48px;
+  --margin-8: 64px;
 
   --font-size-0: 12px;
   --font-size-1: 14px;
