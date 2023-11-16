@@ -22,7 +22,7 @@ const RouteSecurity = ({ children }: {children: React.ReactNode}) => {
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const loggedInUser = myStore.user.isLogged;
    
-  const permitedRoutesRegex = /^(\/$|\/signin$|\/signup$|\/courses(\/[a-zA-Z0-9])*$)/;
+  const permitedRoutesRegex = /^(\/$|\/signin$|\/signup$|\/courses(\/[a-zA-Z0-9]+)*$)/;
   const restrictedSignedInRoutes = ["/signin", "/signup"];
 
   useEffect(() => {

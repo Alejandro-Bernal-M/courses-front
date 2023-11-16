@@ -1,23 +1,20 @@
 import type { BasicCourseProps } from '@/types/course'
 import styles from './course.module.css'
-import { useSyncExternalStore } from "react";
-import store from "@/redux/store";
+import { useRouter } from 'next/navigation';
 
 function Course({
-    _id,
-    description,
-    enrollmentStatus,
-    name,
-    prerequisites,
-    thumbnail,
-  }: BasicCourseProps) {
+  _id,
+  description,
+  enrollmentStatus,
+  name,
+  prerequisites,
+  thumbnail,
+}: BasicCourseProps) {
   
-  const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
-  const userStore = myStore.user;
-  const loggedIn = userStore.isLogged;
-
+  const { push } = useRouter();
+  
   const handleViewDetails = (id:string) => {
-    console.log('id', id)
+    push(`/courses/${id}`)
   };
 
   return (

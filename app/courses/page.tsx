@@ -10,7 +10,6 @@ import store from "@/redux/store";
 import Course from "@/components/Course/Course";
 import type { BasicCourseProps } from '@/types/course'
 
-
 function Courses() {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
