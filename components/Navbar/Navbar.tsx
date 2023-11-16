@@ -24,7 +24,7 @@ const Navbar = () => {
         <h1>Get Knowledge</h1>
       </div>
       <ul className={styles.ul}>
-        <li>Courses</li>
+        <li><Link href="/courses" >Courses </Link></li>
         {user.isLogged ?
           (
             <>
