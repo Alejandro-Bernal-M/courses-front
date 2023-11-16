@@ -12,9 +12,9 @@
   gap: var(--padding-2);
 }
 
-/* .nav div {
-  flex: 1;
-} */
+.title {
+  font-size: var(--font-size-4);
+}
 
 .ul {
   display: flex;
@@ -23,7 +23,6 @@
   gap: var(--padding-3);
   list-style: none;
   font-size: var(--font-size-3);
-  /* flex: 1; */
 }
 
 .link {

@@ -21,7 +21,7 @@ const Navbar = () => {
   return(
     <nav className={styles.nav}>
       <div>
-        <h1><Link href="/" className={styles.link}> Get Knowledge</Link></h1>
+        <span className={styles.title}><Link href="/" className={styles.link}> Get Knowledge</Link></span>
       </div>
       <ul className={styles.ul}>
         <li><Link href="/courses" className={styles.link} >Courses </Link></li> 
@@ -35,8 +35,8 @@ const Navbar = () => {
           :
           (
             <>
-              <li><Link href='/signin' className={styles.link} >Signin</Link></li>
-              <li><Link href='/signup' className={styles.link} >Signup </Link></li>
+              <li><Link href='/signin' className={styles.link} >Sign in</Link></li>
+              <li><Link href='/signup' className={styles.link} >Sign up </Link></li>
             </>
           )
         }
