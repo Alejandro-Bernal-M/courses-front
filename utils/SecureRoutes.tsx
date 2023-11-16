@@ -22,7 +22,7 @@ const RouteSecurity = ({ children }: {children: React.ReactNode}) => {
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const loggedInUser = myStore.user.isLogged;
 
-  const permitedRoutes = ["/", "/signin", "/signup"];
+  const permitedRoutes = ["/", "/signin", "/signup", "/courses"];
   const restrictedSignedInRoutes = ["/signin", "/signup"];
 
   useEffect(() => {
