@@ -3,6 +3,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import apiEndpoints from "@/utils/apiEndpoints";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import {signin} from "@/redux/slices/userSlice";
+import { useRouter } from "next/navigation";
 
 type SignupProps = {
   firstName: FormDataEntryValue;
@@ -14,6 +17,8 @@ type SignupProps = {
 };
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [admin, setAdmin] = useState(false);
   const handleSubmit= (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,7 +58,11 @@ const Signup = () => {
       .then(res => {
         console.log(res);
         toast.success('User created successfully');
+        dispatch(signin(res.data))
+        localStorage.setItem('token', JSON.stringify(res.data.token));
+        localStorage.setItem('user', JSON.stringify(res.data.user));
         form.reset();
+        router.push('/');
       })
       .catch(err => {
         console.log(err);
