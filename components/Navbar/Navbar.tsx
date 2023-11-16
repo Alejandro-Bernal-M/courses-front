@@ -21,7 +21,7 @@ const Navbar = () => {
   return(
     <nav className={styles.nav}>
       <div>
-        <h1>Get Knowledge</h1>
+        <h1><Link href="/"> Get Knowledge</Link></h1>
       </div>
       <ul className={styles.ul}>
         <li><Link href="/courses" >Courses </Link></li>

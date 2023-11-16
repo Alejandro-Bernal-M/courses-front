@@ -19,7 +19,6 @@ function Courses() {
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const courseStore= myStore.courses;
   const courses = courseStore.courses;
-  console.log(courses);
   return (
     <section>
       <h1>All our courses</h1> 
