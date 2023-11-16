@@ -21,12 +21,12 @@ const RouteSecurity = ({ children }: {children: React.ReactNode}) => {
   const pathname = usePathname();
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const loggedInUser = myStore.user.isLogged;
-
-  const permitedRoutes = ["/", "/signin", "/signup", "/courses"];
+   
+  const permitedRoutesRegex = /^(\/$|\/signin$|\/signup$|\/courses(\/[a-zA-Z0-9])*$)/;
   const restrictedSignedInRoutes = ["/signin", "/signup"];
 
   useEffect(() => {
-    if ( !permitedRoutes.includes(pathname)  && !loggedInUser) {
+    if ( !permitedRoutesRegex.test(pathname)  && !loggedInUser) {
       toast.error("Please login first");
       push("/");
     }
