@@ -3,12 +3,21 @@ import styles from './Navbar.module.css';
 import { useSyncExternalStore } from 'react';
 import store from "@/redux/store";
 import Link from 'next/link';
+import { logout } from '@/redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
+
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const { user } = myStore;
 
-
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    dispatch(logout());
+  };
   return(
     <nav className={styles.nav}>
       <div>
@@ -20,13 +29,13 @@ const Navbar = () => {
           (
             <>
               <li>Dashboard</li>
-              <li>Logout</li>
+              <li><button onClick={handleLogout}>Logout</button></li>
             </>
           )
           :
           (
             <>
-              <li>Signin</li>
+              <li><Link href='/signin' >Signin</Link></li>
               <li><Link href='/signup' >Signup </Link></li>
             </>
           )
