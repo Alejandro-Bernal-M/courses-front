@@ -1,4 +1,6 @@
 'use client'
+
+import styles from './page.module.css'
 import { getCourses } from "@/redux/slices/coursesSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -20,9 +22,9 @@ function Courses() {
   const courseStore= myStore.courses;
   const courses = courseStore.courses;
   return (
-    <section>
-      <h1>All our courses</h1> 
-      <div>
+    <section className={styles.section}>
+      <h1 className={styles.title}>All our courses</h1> 
+      <div className={styles.coursesHolder}>
         {courses.map((course:CourseProps) => (
           <Course
             key={course._id}

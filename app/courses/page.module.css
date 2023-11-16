@@ -1,0 +1,34 @@
+.section {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-image: url('../../assets/images/blurry-gradient-haikei.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--padding-relative-h-1) 0;
+  text-align: center;
+  gap: var(--margin-6);
+}
+
+.title {
+  font-size: var(--font-size-6);
+  color: var(--color-1);
+}
+
+.coursesHolder {
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-6);
+}
+
+@media (width < 768px) {
+  .section {
+    background-image: url('../../assets/images/blurry-gradient-haikei-mobile.svg');
+  }
+}
