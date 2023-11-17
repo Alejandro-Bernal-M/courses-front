@@ -4,6 +4,7 @@ import axios from 'axios';
 import apiEndpoints from '@/utils/apiEndpoints';
 import type { CourseProps } from '@/types/course';
 import toast from 'react-hot-toast';
+import { AxiosError } from 'axios';
 
 const initialState = {
   courses: [] as CourseProps[],
@@ -45,6 +46,32 @@ export const getSpecificCourse = createAsyncThunk(
     }
   }
 );
+
+export const createCourse = createAsyncThunk(
+  'courses/createCourse',
+  async({formData, token} : {formData: FormData, token: string}) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: token,
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+      const response = await axios.post(apiEndpoints.createCourse, formData, config);
+      return response.data;
+    } catch (error) {
+      if(error instanceof AxiosError){
+        if(error.response?.status == 401){
+          toast.error('Session expired, please login again')
+          return {error: true};
+        }
+      }
+      console.log('error from async', error)
+      toast.error('Error creating course');
+    }
+  }
+);
+
 
 export const getSpecificCourseSignin = createAsyncThunk(
   'courses/getSpecificCourseSignin',
@@ -104,6 +131,21 @@ const coursesSlice = createSlice({
       state.loading = false;
       state.error = true;
       console.error('Error fetching course:', action.error);
+    });
+    builder.addCase(createCourse.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(createCourse.fulfilled, (state, action) => {
+      if(!action.payload.error){
+        toast.success('Course created successfully');
+        state.courses.push(action.payload);
+      }
+      state.loading = false;
+    });
+    builder.addCase(createCourse.rejected, (state, action) => {
+      state.loading = false;
+      state.error = true;
+      console.error('Error creating course:', action.error);
     });
   }
 });
