@@ -1,11 +1,13 @@
 'use client'
 import styles from './page.module.css'
 import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {ThunkDispatch} from '@reduxjs/toolkit'
 import { useSyncExternalStore } from 'react'
 import store from '@/redux/store'
-import { getSpecificCourse } from '@/redux/slices/coursesSlice'
+import { getSpecificCourse, getSpecificCourseSignin } from '@/redux/slices/coursesSlice'
+import { MdExpandMore } from "react-icons/md";
+import toast from 'react-hot-toast'
 
 function page({params}: {params: {id: string}}) {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -13,10 +15,27 @@ function page({params}: {params: {id: string}}) {
   const courseStore= myStore.courses;
   const loading = courseStore.loading;
   const course =courseStore.course;
+  const userStore = myStore.user;
+  const isLogged = userStore.isLogged;
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    dispatch(getSpecificCourse(params.id));
+    if(isLogged){
+      dispatch(getSpecificCourseSignin({courseId: params.id, token: userStore.token, userId: userStore.id}));
+      return;
+    }else {
+      dispatch(getSpecificCourse(params.id));
+    }
   }, [dispatch]);
+
+  const handleExpand = () => {
+    if(!isLogged){
+      toast.error('Login to see details');
+      return;
+    }else {
+      setExpanded(!expanded);
+    }
+  };
 
   return (
     <section className={styles.section}>
@@ -35,10 +54,26 @@ function page({params}: {params: {id: string}}) {
             <p>Instructor: {course.instructor} </p>
             <p>Prerequisites:</p>
             <ul className={styles.prerequisitesUl}>
-              {course.prerequisites.map((prerequisite) => (
-                <li className={styles.prerequisitesLi}>{prerequisite}</li>
+              {course.prerequisites.map((prerequisite, index) => (
+                <li key={index} className={styles.prerequisitesLi}>{prerequisite}</li>
               ))}
             </ul>
+            <button className='button' onClick={handleExpand}>Syllabus <MdExpandMore className={styles.expandIcon} /></button>
+            { expanded && course.syllabus &&(
+              <div  className={styles.syllabusHolder}>
+                  {course.syllabus.map((syllabusItem, index) => (
+                      <ul key={index} className={styles.syllabusUl}>
+                        <li className={styles.syllabusLi}> 
+                          <div className={styles.syllabusDiv}>
+                            <p>Week {syllabusItem.week}</p>
+                            <p>Topic: {syllabusItem.topic}</p>
+                            <p>Content: {syllabusItem.content}</p>
+                          </div>
+                        </li>
+                      </ul>
+                  ))}
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.buttonsHolder}>
