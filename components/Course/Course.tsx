@@ -30,7 +30,7 @@ function Course({
           <p>Prerequisites:</p>
           <ul className={styles.prerequisitesUl}>
             {prerequisites.map((prerequisite) => (
-              <li className={styles.prerequisitesLi}>{prerequisite}</li>
+              <li key={prerequisite} className={styles.prerequisitesLi}>{prerequisite}</li>
             ))}
           </ul>
         </div>
