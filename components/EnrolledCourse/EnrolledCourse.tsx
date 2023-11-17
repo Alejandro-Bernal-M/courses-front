@@ -2,6 +2,7 @@ import styles from './enrolledCourse.module.css'
 import type { EnrolledCourse } from '@/types/course'
 import { FaSpinner } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 function EnrolledCourse({
   course
@@ -9,6 +10,11 @@ function EnrolledCourse({
   course: EnrolledCourse
 }) {
   const dueDate = new Date(course.dueDate);
+  const router = useRouter();
+
+  const handleDetails = () => {
+    router.push(`/dashboard/details/${course._id}`);
+  };
 
   return (
     <div className={styles.courseHolder}>
@@ -21,7 +27,7 @@ function EnrolledCourse({
         <p>Due date: {course.completed ? 'Finished': dueDate.toDateString()}</p>
         <div className={styles.progressContainer}>
           <p>Progress:</p>
-          <p>{course.progress}%</p>
+          <p>{course.progress?.toFixed(1)}%</p>
           <div className={styles.progressBar} style={{ width: `${course.progress}%` }}></div>
         </div>
       </div>
@@ -37,7 +43,7 @@ function EnrolledCourse({
             </p>
             }
         </div>
-        <button className='button'>Details</button>
+        <button className='button' onClick={handleDetails}>Details</button>
         {course.completed ? null: <button className='button' >Mark as completed</button>}
       </div>
     </div>
