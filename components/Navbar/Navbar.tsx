@@ -5,15 +5,18 @@ import store from "@/redux/store";
 import Link from 'next/link';
 import { logout } from '@/redux/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const { user } = myStore;
 
   const handleLogout = () => {
+    router.push('/');
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     dispatch(logout());
@@ -40,6 +43,7 @@ const Navbar = () => {
             </>
           )
         }
+        {user.role === 'admin' && <li><Link href='/admin' className={styles.link} >Admin </Link></li>}
       </ul>
     </nav>
   )
