@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react'
 import {ThunkDispatch} from '@reduxjs/toolkit'
 import { useSyncExternalStore } from 'react'
 import store from '@/redux/store'
-import { getSpecificCourse, getSpecificCourseSignin } from '@/redux/slices/coursesSlice'
+import { getSpecificCourse } from '@/redux/slices/coursesSlice'
 import { MdExpandMore } from "react-icons/md";
 import toast from 'react-hot-toast'
+import apiEndpoints from '@/utils/apiEndpoints'
+import axios from 'axios'
 
 function page({params}: {params: {id: string}}) {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -20,12 +22,7 @@ function page({params}: {params: {id: string}}) {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    if(isLogged){
-      dispatch(getSpecificCourseSignin({courseId: params.id, token: userStore.token, userId: userStore.id}));
-      return;
-    }else {
-      dispatch(getSpecificCourse(params.id));
-    }
+    dispatch(getSpecificCourse(params.id));
   }, [dispatch]);
 
   const handleExpand = () => {
@@ -35,6 +32,35 @@ function page({params}: {params: {id: string}}) {
     }else {
       setExpanded(!expanded);
     }
+  };
+
+  const handleEnroll = () => {
+    if(!isLogged){
+      toast.error('Login to enroll');
+      return;
+    }else {
+      try {
+        const config ={
+          headers: {
+            Authorization: userStore.token
+          }
+        };
+        axios.patch(apiEndpoints.enrollCourse(params.id, userStore.id), {}, config)
+        .then((res) => {
+          if(res.status === 200){
+            toast.success(res.data.message);
+          }else{
+            toast.error(res.data.message);
+          }
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+        });
+      } catch (error) {
+        console.log(error);
+        toast.error('Something went wrong');
+      }
+    };
   };
 
   return (
@@ -77,7 +103,7 @@ function page({params}: {params: {id: string}}) {
           </div>
         </div>
         <div className={styles.buttonsHolder}>
-          <button className='button'>Enroll</button>
+          <button className='button' onClick={handleEnroll}>Enroll</button>
         </div>
       </div>):
       (<div>Loading...</div>)}
