@@ -38,7 +38,6 @@ const Signin = () => {
 
     axios.post(apiEndpoints.signin, body)
       .then(res => {
-        console.log(res);
         dispatch(signin(res.data))
         form.reset();
         router.push('/');
