@@ -44,7 +44,6 @@ function EnrolledCourse({
             }
         </div>
         <button className='button' onClick={handleDetails}>Details</button>
-        {course.completed ? null: <button className='button' >Mark as completed</button>}
       </div>
     </div>
   )

@@ -10,6 +10,7 @@ import { MdExpandMore } from "react-icons/md";
 import toast from 'react-hot-toast'
 import { FaSpinner } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
+import { markAsCompleted } from '@/utils/commonFunction'
 
 function page({params}: {params: {id: string}}) {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -23,6 +24,7 @@ function page({params}: {params: {id: string}}) {
   let completedAt = undefined;
   let dueDate = undefined;
   let enrolledAt = undefined;
+  const [counter, setCounter] = useState(0);
 
   if(course.completedAt){
     completedAt = new Date(course.completedAt).toDateString();
@@ -38,9 +40,7 @@ function page({params}: {params: {id: string}}) {
 
   useEffect(() => {
     dispatch(getSpecificCourseSignin({userId: userStore.id, courseId: params.id, token: userStore.token}));
-  }, [dispatch]);
-
-  console.log(course)
+  }, [dispatch, counter]);
 
   const handleExpand = () => {
     if(!isLogged){
@@ -51,8 +51,11 @@ function page({params}: {params: {id: string}}) {
     }
   };
 
-  const handleComplete = () => {
-    console.log('complete')
+  const handleComplete =async() => {
+    const response = await markAsCompleted(userStore.id, course._id, userStore.token);
+    if(response == 1){
+      setCounter(counter + 1);
+    }
   };
 
   return (

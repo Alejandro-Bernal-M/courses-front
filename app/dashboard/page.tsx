@@ -17,8 +17,6 @@ function Dashboard() {
     dispatch(getenrolledCourses(userStore.token));
   }, [dispatch]);
 
-  console.log(enrolledCourses);
-
   return (
     <section className={styles.section}>
       <h1 className={styles.title}>Enrolled Courses</h1>
