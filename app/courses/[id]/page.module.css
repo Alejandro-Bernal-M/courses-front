@@ -123,6 +123,12 @@
   padding: var(--padding-4);
 }
 
+.loading{
+  font-size: var(--font-size-5);
+  color: var(--color-1);
+}
+
+
 @media (width < 768px) {
   .section {
     background-image: url('../../../assets/images/blurry-gradient-haikei-mobile.svg');

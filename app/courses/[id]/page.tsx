@@ -106,7 +106,7 @@ function page({params}: {params: {id: string}}) {
           <button className='button' onClick={handleEnroll}>Enroll</button>
         </div>
       </div>):
-      (<div>Loading...</div>)}
+      (<div className={styles.loading}>Loading...</div>)}
     </section>
   )
 }
