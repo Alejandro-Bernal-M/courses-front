@@ -45,6 +45,24 @@ export const getSpecificCourse = createAsyncThunk(
   }
 );
 
+export const getSpecificCourseSignin = createAsyncThunk(
+  'courses/getSpecificCourseSignin',
+  async({userId, courseId, token}: {userId: string, courseId: string, token: string}) => {
+    try {
+      const config = {
+        headers: {
+          Authorization:  token},
+        };
+      const response = await axios.get(`${apiEndpoints.specificCourseSignin(userId, courseId)}`,
+      config);
+      return response.data;
+    } catch (error) {
+      console.log('error', error)
+      toast.error('Error fetching course');
+    }
+  }
+);
+
 const coursesSlice = createSlice({
   name: 'courses',
   initialState,
@@ -70,6 +88,18 @@ const coursesSlice = createSlice({
       state.course = action.payload;
     });
     builder.addCase(getSpecificCourse.rejected, (state, action) => {
+      state.loading = false;
+      state.error = true;
+      console.error('Error fetching course:', action.error);
+    });
+    builder.addCase(getSpecificCourseSignin.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getSpecificCourseSignin.fulfilled, (state, action) => {
+      state.loading = false;
+      state.course = action.payload.course;
+    });
+    builder.addCase(getSpecificCourseSignin.rejected, (state, action) => {
       state.loading = false;
       state.error = true;
       console.error('Error fetching course:', action.error);

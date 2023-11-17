@@ -4,8 +4,9 @@ import toast from 'react-hot-toast';
 const initialState = {
   name: '',
   email: '',
+  id: '',
   token: '',
-  isLogged: false,
+  isLogged: true,
 };
 
 const userSlice = createSlice({
@@ -16,6 +17,7 @@ const userSlice = createSlice({
       state.name = action.payload.user.name;
       state.email = action.payload.user.email;
       state.token = action.payload.token;
+      state.id = action.payload.user._id;
       state.isLogged = true;
     },
     logout: (state) => {
