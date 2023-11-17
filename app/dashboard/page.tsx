@@ -14,6 +14,9 @@ function Dashboard() {
   const enrolledCourses = userStore.enrolledCourses;
 
   useEffect(() => {
+    if(userStore.role !== 'user'){
+      return;
+    }
     dispatch(getenrolledCourses(userStore.token));
   }, [dispatch]);
 
@@ -21,9 +24,11 @@ function Dashboard() {
     <section className={styles.section}>
       <h1 className={styles.title}>Enrolled Courses</h1>
       <div className={styles.coursesHolder}>
-        {enrolledCourses.map((course: any) => (
-          <EnrolledCourse key={course.id} course={course} />
-        ))}
+        {enrolledCourses.length > 0 && userStore.role == 'user' ? (enrolledCourses.map((course: any) => (
+          <EnrolledCourse key={course._id} course={course} />
+        )))
+        :
+        (<h2 className={styles.title}>No courses enrolled</h2>)}
       </div>
     </section>
   )
