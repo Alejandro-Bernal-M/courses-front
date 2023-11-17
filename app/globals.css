@@ -87,6 +87,7 @@ li {
   box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--margin-2);
 }
 
