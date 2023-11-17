@@ -34,6 +34,7 @@ const initialState = {
   email: '',
   id: '',
   token: '',
+  role: '',
   isLogged: false,
   enrolledCourses: [],
   loading: false,
@@ -48,6 +49,7 @@ const userSlice = createSlice({
       state.email = action.payload.user.email;
       state.token = action.payload.token;
       state.id = action.payload.user._id;
+      state.role = action.payload.user.role;
       state.isLogged = true;
     },
     logout: (state) => {
@@ -55,6 +57,8 @@ const userSlice = createSlice({
       state.email = '';
       state.token = '';
       state.isLogged = false;
+      state.id = '';
+      state.role = '';
       toast.success('Logout successfully');
     },
   },
