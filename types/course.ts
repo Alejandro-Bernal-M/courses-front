@@ -16,6 +16,11 @@ export type CourseProps ={
   schedule: string;
   thumbnail: string;
   syllabus?: syllabus[];
+  dueDate?: string;
+  enrolledAt?: string;
+  progress?: number;
+  completed?: boolean;
+  completedAt?: string;
 }
 
 export type BasicCourseProps = {
