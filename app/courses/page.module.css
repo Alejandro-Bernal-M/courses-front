@@ -27,8 +27,55 @@
   gap: var(--margin-6);
 }
 
+.searchDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-2);
+}
+.searchDivDiv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-2);
+}
+
+.search {
+  width: 400px;
+  padding: var(--padding-2) var(--padding-3);
+  border-radius: 4px;
+  border: none;
+  background-color: var(--color-6);
+  font-size: var(--font-size-2);
+  color: var(--color-4);
+}
+
+.input {
+  padding: var(--padding-2) var(--padding-3);
+  border-radius: 4px;
+  border: none;
+  background-color: var(--color-6);
+  font-size: var(--font-size-2);
+  color: var(--color-4);
+}
+
+.searchP {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-2);
+  font-size: var(--font-size-4);
+  color: var(--color-4);
+}
+
 @media (width < 768px) {
   .section {
     background-image: url('../../assets/images/blurry-gradient-haikei-mobile.svg');
+  }
+
+  .search {
+    width: 90%;
   }
 }
