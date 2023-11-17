@@ -71,7 +71,8 @@ p,
 span,
 button,
 input,
-li {
+li,
+option {
   font-family: var(--font-mono);
 }
 
