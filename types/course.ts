@@ -1,6 +1,7 @@
  export type syllabus = {
   week: number;
   content: string;
+  topic: string;
 }
 
 export type CourseProps ={
