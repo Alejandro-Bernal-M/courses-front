@@ -13,10 +13,11 @@ const initialState = {
     description: '',
     thumbnail: '',
     enrollmentStatus: '',
+    duration: '',
     prerequisites: ['fetching data'],
 
   } as CourseProps,
-  loading: false,
+  loading: true,
   error: false,
 }
 
