@@ -1,0 +1,96 @@
+.courseHolder {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--margin-4);
+  padding: var(--padding-4);
+  border-radius: 10px;
+  background-color: var(--color-8);
+}
+
+.courseName {
+  color: var(--color-2)
+}
+
+.imgHolder {
+  width: auto;
+}
+
+.imgHolder img {
+  border-radius: 10px;
+}
+
+.courseInfo{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--margin-2);
+}
+
+.courseInfo p {
+  color: var(--color-4);
+}
+
+.progressContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--margin-1);
+}
+
+.progressBar{
+  height: 20px;
+  border-radius: 10px;
+  background-color: var(--color-2);
+  transition: width 0.5s ease; 
+  align-self: flex-start;
+}
+
+.progressInfo {
+  width: 14%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--margin-3);
+}
+
+.completedDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-1);
+  width: 100%;
+}
+
+.completedP{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--margin-1);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-2);
+}
+
+@media (width < 768px) {
+  .courseInfo{
+    width: 100%;
+  }
+  .progressContainer {
+    width: 100%;
+  }
+  .progressInfo {
+    width: 100%;
+  }
+}
