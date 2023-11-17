@@ -72,7 +72,6 @@ export const createCourse = createAsyncThunk(
   }
 );
 
-
 export const getSpecificCourseSignin = createAsyncThunk(
   'courses/getSpecificCourseSignin',
   async({userId, courseId, token}: {userId: string, courseId: string, token: string}) => {
@@ -83,6 +82,19 @@ export const getSpecificCourseSignin = createAsyncThunk(
         };
       const response = await axios.get(`${apiEndpoints.specificCourseSignin(userId, courseId)}`,
       config);
+      return response.data;
+    } catch (error) {
+      console.log('error', error)
+      toast.error('Error fetching course');
+    }
+  }
+);
+
+export const searchCourses = createAsyncThunk(
+  'courses/searchCourses',
+  async(query: string) => {
+    try {
+      const response = await axios.get(`${apiEndpoints.search(query)}`);
       return response.data;
     } catch (error) {
       console.log('error', error)
@@ -146,6 +158,18 @@ const coursesSlice = createSlice({
       state.loading = false;
       state.error = true;
       console.error('Error creating course:', action.error);
+    });
+    builder.addCase(searchCourses.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(searchCourses.fulfilled, (state, action) => {
+      state.loading = false;
+      state.courses = action.payload;
+    });
+    builder.addCase(searchCourses.rejected, (state, action) => {
+      state.loading = false;
+      state.error = true;
+      console.error('Error searching courses:', action.error);
     });
   }
 });
