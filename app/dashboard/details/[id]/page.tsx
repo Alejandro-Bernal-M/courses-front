@@ -12,7 +12,7 @@ import { FaSpinner } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { markAsCompleted } from '@/utils/commonFunction'
 
-function page({params}: {params: {id: string}}) {
+function Page({params}: {params: {id: string}}) {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const courseStore= myStore.courses;
@@ -131,4 +131,4 @@ function page({params}: {params: {id: string}}) {
   )
 }
 
-export default page
+export default Page
