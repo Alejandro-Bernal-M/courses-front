@@ -11,7 +11,7 @@ import toast from 'react-hot-toast'
 import apiEndpoints from '@/utils/apiEndpoints'
 import axios from 'axios'
 
-function page({params}: {params: {id: string}}) {
+function Page({params}: {params: {id: string}}) {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const myStore = useSyncExternalStore(store.subscribe, store.getState, store.getState);
   const courseStore= myStore.courses;
@@ -111,4 +111,4 @@ function page({params}: {params: {id: string}}) {
   )
 }
 
-export default page
+export default Page
