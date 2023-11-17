@@ -26,3 +26,16 @@ export type BasicCourseProps = {
   enrollmentStatus: string;
   prerequisites: string[];
 }
+
+export type EnrolledCourse = {
+  _id: string;
+  completed: boolean;
+  completedAt: string;
+  description: string;
+  dueDate: string;
+  enrolledAt: string;
+  instructor: string;
+  name: string;
+  progress: number;
+  thumbnail: string;
+}
