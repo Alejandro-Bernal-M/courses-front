@@ -1,5 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import apiEndpoints from '@/utils/apiEndpoints';
+
+export const getenrolledCourses = createAsyncThunk(
+  'user/getenrolledCourses',
+  async (token: string) => {
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    }
+    const response = await axios.get(apiEndpoints.getEnrolled, config);
+    console.log(response.data)
+    return response.data;
+  }
+);
 
 const initialState = {
   name: '',
@@ -7,6 +24,8 @@ const initialState = {
   id: '',
   token: '',
   isLogged: true,
+  enrolledCourses: [],
+  loading: false,
 };
 
 const userSlice = createSlice({
@@ -27,6 +46,19 @@ const userSlice = createSlice({
       state.isLogged = false;
       toast.success('Logout successfully');
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getenrolledCourses.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getenrolledCourses.fulfilled, (state, action) => {
+      state.loading = false;
+      state.enrolledCourses = action.payload.courses;
+    });
+    builder.addCase(getenrolledCourses.rejected, (state, action) => {
+      state.loading = false;
+      toast.error('Error fetching enrolled courses');
+    });
   }
 })
 
