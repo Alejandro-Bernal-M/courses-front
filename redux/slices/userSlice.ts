@@ -3,19 +3,30 @@ import toast from 'react-hot-toast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import apiEndpoints from '@/utils/apiEndpoints';
+import { AxiosError } from 'axios';
+
 
 export const getenrolledCourses = createAsyncThunk(
   'user/getenrolledCourses',
   async (token: string) => {
-    const config = {
-      headers: {
-        Authorization: token,
-      },
+    try {
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      }
+      const response = await axios.get(apiEndpoints.getEnrolled, config);
+      return response.data;
+    } catch (error) {
+      if(error instanceof AxiosError){
+        if(error.response?.status == 401){
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          return {isLogged: false}
+        }
+      }
     }
-    const response = await axios.get(apiEndpoints.getEnrolled, config);
-    console.log(response.data)
-    return response.data;
-  }
+    }
 );
 
 const initialState = {
@@ -23,7 +34,7 @@ const initialState = {
   email: '',
   id: '',
   token: '',
-  isLogged: true,
+  isLogged: false,
   enrolledCourses: [],
   loading: false,
 };
@@ -53,7 +64,12 @@ const userSlice = createSlice({
     });
     builder.addCase(getenrolledCourses.fulfilled, (state, action) => {
       state.loading = false;
-      state.enrolledCourses = action.payload.courses;
+      if(action.payload.isLogged == false){
+        state.enrolledCourses = [];
+        state.isLogged = false;
+      }else{
+        state.enrolledCourses = action.payload.courses;
+      }
     });
     builder.addCase(getenrolledCourses.rejected, (state, action) => {
       state.loading = false;
