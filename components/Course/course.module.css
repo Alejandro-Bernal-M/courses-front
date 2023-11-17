@@ -49,12 +49,13 @@
 
 .prerequisitesUl {
   display: flex;
+  flex-direction: column;
   list-style: circle;
   width: 100%;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: var(--margin-5);
+  gap: var(--margin-3);
   padding-left: var(--padding-6);
 }
 
