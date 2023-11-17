@@ -1,5 +1,5 @@
 'use client'
-import styles from './Navbar.module.css';
+import styles from './navbar.module.css';
 import { useSyncExternalStore } from 'react';
 import store from "@/redux/store";
 import Link from 'next/link';
