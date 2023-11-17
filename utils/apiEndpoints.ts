@@ -8,6 +8,7 @@ const apiEndpoints = {
   getEnrolled: process.env.NEXT_PUBLIC_API +'/api/user/getEnrolled',
   markAsCompleted: (userId:string, courseId:string) => process.env.NEXT_PUBLIC_API+`/api/user/${userId}/courses/${courseId}/mark-as-completed`,
   createCourse: process.env.NEXT_PUBLIC_API+'/api/admin/courses/create',
+  search: (query:string) => process.env.NEXT_PUBLIC_API+`/api/courses/search?q=${query}`,
 };
 
 export default apiEndpoints;
