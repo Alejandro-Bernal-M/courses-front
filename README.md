@@ -26,7 +26,7 @@
 
 # 📖 Get Knowledge <a name="about-project"></a>
 
-**Get Knowledge** Get Knowledge is a web application where you can check for courses, create a profile, enroll in courses and check your progress, made as part of alemeno Full-stack internship asignment.
+**Get Knowledge** Get Knowledge is a web application where you can check for courses, create a profile, enroll in courses and check your progress, made as part of alemeno Full-stack internship assignment.
 
 ## 🛠 Built With <a name="built-with"></a>
 - Back-End: `Node.js`
@@ -68,7 +68,7 @@
 
 ## 🚀 Live Demo <a name="live-demo">
 
-[Video presentation](pending)
+[Video presentation](https://drive.google.com/file/d/1t6VLhVgv7Z3pBFl7OHJKCMX1n6x6qv_Z/view?usp=sharing)
 
 [Live demo on vercel](https://getknowledge.vercel.app/)
 
