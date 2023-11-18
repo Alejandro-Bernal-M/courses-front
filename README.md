@@ -132,7 +132,10 @@ Clone this repository to your desired folder:
 Install this project with:
 
   `npm i`
-
+### Set up enviroment variables
+ - Create a file called ".env" in your root directory
+ - Create the following variables:
+    -NEXT_PUBLIC_API="http://localhost:2000" (YOUR API URL)
 ### Usage
 
 To start the server, execute the following command:
