@@ -1,7 +1,7 @@
 .section {
   width: 100%;
-  height: auto;
   min-height: 100vh;
+  height: auto;
   background-image: url('../../../../assets/images/blurry-gradient-haikei.svg');
   background-repeat: no-repeat;
   background-size: cover;
