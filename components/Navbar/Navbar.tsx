@@ -38,7 +38,7 @@ const Navbar = () => {
           :
           (
             <>
-              <li><Link href='/signin' className={styles.link} >Sign in</Link></li>
+              <li><Link href='/signin' className={styles.link} >Login</Link></li>
               <li><Link href='/signup' className={styles.link} >Sign up </Link></li>
             </>
           )

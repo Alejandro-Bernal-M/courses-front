@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--padding-3);
+  gap: var(--padding-4);
   list-style: none;
   font-size: var(--font-size-3);
 }
