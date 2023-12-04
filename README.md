@@ -89,7 +89,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git https://https://github.com/Alejandro-Bernal-M/courses-API.git
+  git https://github.com/Alejandro-Bernal-M/courses-API.git
   cd courses-API
 ```
 
